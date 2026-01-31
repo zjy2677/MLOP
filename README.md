@@ -1,5 +1,3 @@
-# MLOP
-
 # MLOP – House Price Calculator API
 
 This repository contains a simple **FastAPI-based REST API** for estimating house prices using a transparent, rule-based scoring function.
