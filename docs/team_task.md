@@ -1,6 +1,7 @@
 # Project Overview
 
 This project is a **property price checker prototype**
+By far this is just a naive thought and could be changed during development phase
 
 The goal is to help users evaluate a property listing by:
 - estimating a fair market price from historical transactions,
