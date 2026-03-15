@@ -17,7 +17,14 @@ The API exposes an endpoint that:
 This is **not a machine learning model (yet)**.  
 It is a deterministic pricing function that can later be replaced or extended with ML.
 
----
+```text
+.
+├── app/
+│   ├── main.py
+│   └── scoring.py
+├── Dockerfile
+└── README.md
+
 Project structure:
 ├── app/
 │ ├── main.py # FastAPI entrypoint (API layer)
