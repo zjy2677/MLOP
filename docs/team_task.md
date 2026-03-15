@@ -1,7 +1,6 @@
 # Project Overview
 
-This project is a **property price checker prototype**
-By far this is just a naive thought and could be changed during development phase
+This project is a **property price checker prototype** for a student software engineering group.
 
 The goal is to help users evaluate a property listing by:
 - estimating a fair market price from historical transactions,
@@ -89,20 +88,27 @@ This data preparation work is **already completed** and ready for backend usage.
 
 # Division of Work
 
+This is now organized as a **4-person project**.
+
 ## Member A — Frontend
 - Build and polish Streamlit interface in `frontend/app.py`.
 - Handle input validation and clear result display.
 - Connect frontend requests to backend API.
 
-## Member B — Backend
+## Member B — Backend API
 - Implement/complete analysis endpoint in `backend/main.py`.
-- Use backend services for pricing and anomaly classification.
-- Ensure API response format is stable for frontend integration.
+- Wire backend service calls and response format for frontend integration.
+- Handle commune-not-found and invalid-input API cases.
 
-## Member C — Data
+## Member C — Data & Benchmark Quality
 - Maintain benchmark dataset quality and updates.
-- Verify commune coverage and data consistency.
-- Provide sample test inputs and expected outputs for validation.
+- Verify commune coverage and data consistency in `city_price_benchmark.csv`.
+- Provide sample test cases from `data/samples.csv`.
+
+## Member D — Integration, Testing, and Demo *(this is what I would do)*
+- Integrate frontend ↔ backend in Docker Compose.
+- Run end-to-end checks on sample scenarios.
+- Prepare demo script and final documentation updates in `README.md` / `docs/`.
 
 # Tasks Already Completed
 
@@ -115,18 +121,23 @@ Completed items:
 
 # Remaining Tasks
 
-## Frontend
+## Frontend (Member A)
 - Build final Streamlit UI flow.
 - Connect UI form submission to backend endpoint.
 - Improve result presentation (estimated price, ratio, status).
 
-## Backend
+## Backend (Member B)
 - Implement `/analyze` endpoint behavior.
 - Load and query benchmark CSV by commune.
 - Finalize fair price estimation logic.
 - Finalize anomaly detection thresholds and output labels.
 
-## Integration & Validation
+## Data (Member C)
+- Validate benchmark coverage for target communes.
+- Review outlier communes and document assumptions.
+- Keep sample input dataset ready for testing.
+
+## Integration & Validation (Member D)
 - End-to-end connection: frontend ↔ backend.
 - Functional tests on representative sample listings.
 - Prepare one demo scenario for project presentation.
@@ -143,6 +154,4 @@ Completed items:
    - Connect Streamlit form to backend and show analysis output.
 
 4. **Milestone 4 — End-to-end validation and demo (To do)**
-   - Test full pipeline and finalize demonstration example.
-
-
+   - Final integration tests, demo walkthrough, and final docs cleanup.
