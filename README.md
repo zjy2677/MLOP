@@ -9,7 +9,8 @@ The project is designed as a learning-oriented backend service and follows basic
 ------------------------------------------
 # Data Source
 
-We use data from DVF of the past years and group by with cities. Thus, we were able to calculate a average price estimator of house in euros/ m^2
+We use data from DVF of the past years and group by with cities. 
+Thus, we were able to calculate a average price estimator of house in euros/ m^2
 
 
 ```text
