@@ -16,4 +16,10 @@ def get_avg_price(ville: str, df: pd.Dataframe) -> float:
   return float(result["avg_price_m2"].values[0])
 
   
+def calculate_prce(ville: str, surface: float, df: pd.DataFrame) -> float:
+  # Caculate the theoretical average price simply using p = surface * avg_price/m^2
+  # Prevent user invalid input for surface area less than or equal to 0
+  if surface <= 0:
+    raise ValueError("Invalid input for surface area")
+  return get_avg_price(ville,df) * surface 
   
