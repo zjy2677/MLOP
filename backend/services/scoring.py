@@ -16,7 +16,7 @@ def get_avg_price(ville: str, df: pd.Dataframe) -> float:
   return float(result["avg_price_m2"].values[0])
 
   
-def calculate_prce(ville: str, surface: float, df: pd.DataFrame) -> float:
+def calculate_price(ville: str, surface: float, df: pd.DataFrame) -> float:
   # Caculate the theoretical average price simply using p = surface * avg_price/m^2
   # Check the surface area is indeed a numeric value not like abc
   if not isinstance(surface, (int, float)):
