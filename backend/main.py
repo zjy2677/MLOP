@@ -3,9 +3,10 @@ from pydantic import BaseModel
 from services.scoring import load_benchmark_data, calculate_price
 from services.anomaly import detect_anomaly
 
-benchmark_df = load_benchmark_data("../data/city_price_benchmark.csv")
+
 
 app = FastAPI(title="House Price Backend")
+benchmark_df = load_benchmark_data("app/data/city_price_benchmark.csv")
 
 class PriceRequest(BaseModel):
     city: str
