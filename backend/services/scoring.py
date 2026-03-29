@@ -5,7 +5,7 @@ def load_benchmark_data(file_path:str):
   df = pd.read_csv(file_path)
   return df
   
-def get_avg_price(ville: str, df: pd.Dataframe) -> float:
+def get_avg_price(ville: str, df: pd.DataFrame) -> float:
   # This function is for retrieving the avg price stored in the database 
   # given the name of the city
   result = df[df["Commune"] == ville]
