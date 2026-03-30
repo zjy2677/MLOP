@@ -8,6 +8,22 @@ BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 st.title("House Price Prototype")
 
+st.sidebar.title("Instructions")
+
+st.sidebar.markdown("""
+### How to use this app
+
+1. Select a city from the dropdown  
+2. Use the search to quickly find your city  
+3. Review the results displayed on the main page  
+
+---
+
+### 💡 Tips
+- You can type to filter cities faster  
+- Names may differ from official spelling  
+- Use the formatted labels for clarity  
+""")
 # --- Inputs ---
 city = st.text_input("City")
 surface = st.number_input("Surface (m²)", min_value=1.0, step=1.0)
