@@ -73,7 +73,7 @@ if st.button("Check Anomaly"):
             if (data['status'] == 'anomaly_overprice'):
                 st.error("This house is overpriced")
             elif (data['status'] == 'anomaly_underprice'):
-                st.error("This house is underpriced")
+                st.warning("This house is underpriced")
             else:
                 st.success("This house is in normal price range")
                          
