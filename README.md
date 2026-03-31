@@ -1,4 +1,4 @@
-# MLOP – House Price Calculator (FRANCE)
+# MLOP – House Price Calculator (FRANCE) - Streamlit Cloud Version
 
 This repository contains a simple **HOUSE PRICE CALCULATOR** for estimating house prices in FRANCE, it also has the ability to identify that ,given a surface area(m^2) and its price(euros), the pricing is reasonable.
 
@@ -20,7 +20,6 @@ Project structure:
 │   ├── services/
 │   │   ├── anomaly.py
 │   │   ├── scoring.py
-│   ├── main.py
 │   └── requirements.txt
 │
 ├── frontend/
