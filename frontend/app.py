@@ -37,7 +37,7 @@ st.divider()
 
 if st.button("Estimate Price"):
     estimated_price = calculate_price(city, surface, df)
-    st.success(f"The estimated price of this house is approximately {data['estimated_price']:.2f} euros")
+    st.success(f"The estimated price of this house is approximately {estimated_price:.2f} euros")
  
 # Anomaly detection module
 if st.button("Check Anomaly"):
