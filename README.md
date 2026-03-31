@@ -49,66 +49,12 @@ We seperated our repo into the following parts:<br>
 (5)**.gitignore**: Prevents potential leakage of sensitive data and avoids unnecessary files
 
 ------------------------------------------
-## How to Run (Docker - Codespaces)
+## How to Run (Streamlit UI)
+This version has the same backend logic as the docker version.  
+You can simply run this app by visiting this website:  
+[House Price Calculator App](https://mlophousepricecalculator-fnakg32aiswfdrvcwtbzoh.streamlit.app/)
 
-Follow these steps to build and run the application using Docker.
 
----
-
-### 1. Build Docker Images
-
-Build both backend and frontend images:
-
-```bash
-docker build -f backend/Dockerfile -t house-backend .
-docker build -f frontend/Dockerfile -t house-frontend .
-```
-
----
-
-### 2. Create a Docker Network
-
-Create a shared network so containers can communicate:
-
-```bash
-docker network create house-net
-```
-
----
-
-### 3. Run the Backend Container
-
-Start the backend service:
-
-```bash
-docker run -d \
-  --name house-backend-container \
-  --network house-net \
-  -p 8000:8000 \
-  house-backend
-```
-
----
-
-### 4. Run the Frontend Container
-
-Start the frontend service:
-
-```bash
-docker run -d \
-  --name house-frontend-container \
-  --network house-net \
-  -p 8501:8501 \
-  -e BACKEND_URL="http://house-backend-container:8000" \
-  house-frontend
-```
-
----
-
-## Access the Application
-
-- Frontend: http://localhost:8501  
-- Backend API: http://localhost:8000
 
 
 
