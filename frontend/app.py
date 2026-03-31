@@ -45,7 +45,7 @@ if st.button("Estimate Price"):
 
         if response.status_code == 200:
             data = response.json()
-            st.success(f"Estimated Price: {data['estimated_price']:.2f}")
+            st.success(f"The estimated price of this house is approximately {data['estimated_price']:.2f} euros")
         else:
             st.error(response.json()["detail"])
 
@@ -67,11 +67,15 @@ if st.button("Check Anomaly"):
 
         if response.status_code == 200:
             data = response.json()
-
             st.write(f"Estimated Price: {data['estimated_price']:.2f}")
             st.write(f"Actual Price: {data['actual_price']:.2f}")
-            st.write(f"Status: {data['status']}")
-
+            if (data['status'] == 'anomaly_overprice'):
+                st.write("This house is overpriced")
+            elif (data['status'] == 'anomaly_underprice'):
+                st.write("This house is underpriced")
+            else:
+                st.write("This house is in normal price range")
+                         
         else:
             st.error(response.json()["detail"])
 
