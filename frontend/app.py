@@ -18,9 +18,12 @@ st.sidebar.markdown("""
 4.You can chekc the estimated price and status by clicking the two buttons
 """)
 # --- Inputs ---
-city = st.text_input("City")
-surface = st.number_input("Surface (m²)", min_value=1.0, step=1.0)
-actual_price = st.number_input("Actual Price", min_value=1.0, step=1000.0)
+df = pd.read_csv("../data/city_price_benchmark.csv")
+cities = sorted(df["Commune"].tolist())
+
+city = st.selectbox("Select City", cities)
+surface = st.number_input("Surface (m²)", min_value=1.0)
+actual_price = st.number_input("Actual Price", min_value=1.0)
 
 st.divider()
 
