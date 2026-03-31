@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import os
 from pathlib import Path
+import pandas as pd
 
 # Backend URL (works locally, can change later for Docker)
 BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
