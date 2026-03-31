@@ -23,12 +23,13 @@ Project structure:
 │   └── requirements.txt
 │
 ├── frontend/
+│   ├── __init__.py
 │   ├── app.py
 │   └── requirements.txt
 │
 ├── data/
 │   ├── city_price_benchmark.csv (This is the complete data file)
-│   └── sample.csv (This contains test data sample)
+│   └── sample.csv (This contains nothing for now)
 │
 ├── .env.example
 ├── .gitignore
