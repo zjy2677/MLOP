@@ -143,7 +143,8 @@ docker run -d \
 ------------------------------------------
 ## Where to improve
 
-(1) We use a rather naive model average price * surface area to predict, we could try to implement a more complex model <br>
+(1) We used a rather naive model average price * surface area to predict, we could try to implement a more complex model <br>
+(2) We can enrich features (district, property age, rooms, floor, energy rating) and train a regression model to reduce bias from city-level average <br>
 (2) We could use a google gemini api to build a chatbot that further assist our customer in using this app <br>
 
 
