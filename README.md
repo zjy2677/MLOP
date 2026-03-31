@@ -49,6 +49,36 @@ We seperated our repo into the following parts:<br>
 (5)**.gitignore**: Prevents potential leakage of sensitive data and avoids unnecessary files
 
 ------------------------------------------
+## Methodology (Backend)
+
+Our backend follows a simple rule-based pipeline powered by the benchmark table in `data/city_price_benchmark.csv`.
+
+### 1) Load city benchmark data
+- At startup, the API loads benchmark data from `city_price_benchmark.csv`.
+- Each row contains a city (`Commune`) and its average price per square meter (`avg_price_m2`).
+
+### 2) House price estimation logic
+For each `/price` request (`city`, `surface`):
+1. Validate `surface` is numeric and strictly greater than 0.
+2. Look up the city in the benchmark table.
+3. Compute a baseline estimate:
+
+`estimated_price = surface * avg_price_m2(city)`
+
+This gives a fast and interpretable reference value for the input property.
+
+### 3) Anomaly detection logic
+For each `/anomaly` request (`city`, `surface`, `actual_price`):
+1. Recompute the same baseline `estimated_price` using the scoring method above.
+2. Build a tolerance interval around the estimate:
+   - `lower_bound = 0.8 × estimated_price`
+   - `upper_bound = 1.3 × estimated_price`
+3. Classify pricing status with simple rules:
+   - `actual_price < lower_bound`  → `anomaly_underprice`
+   - `actual_price > upper_bound`  → `anomaly_overprice`
+   - otherwise                     → `normal`
+
+------------------------------------------
 ## How to Run (Docker - Codespaces)
 
 Follow these steps to build and run the application using Docker.
