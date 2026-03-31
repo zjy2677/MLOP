@@ -1,4 +1,4 @@
-# MLOP – House Price Calculator (FRANCE)
+# MLOP – House Price Calculator (FRANCE) - Docker Version
 
 This repository contains a simple **HOUSE PRICE CALCULATOR** for estimating house prices in FRANCE, it also has the ability to identify if , given a surface area(square meter) and its price(euros), the pricing is reasonable.
 
