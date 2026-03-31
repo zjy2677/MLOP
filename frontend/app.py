@@ -27,7 +27,8 @@ st.sidebar.markdown(
 4. Click the buttons to check the estimated price and anomaly status
 """
 )
-# --- Inputs ---
+
+# Inputs start from here
 cities = sorted(df["Commune"].tolist())
 city = st.selectbox("Select City", cities)
 surface = st.number_input("Surface (m²)", min_value=1.0)
@@ -35,7 +36,6 @@ actual_price = st.number_input("Actual Price", min_value=1.0)
 
 st.divider()
 
-# --- Price Estimation ---
 if st.button("Estimate Price"):
     try:
         response = requests.post(
@@ -56,7 +56,7 @@ if st.button("Estimate Price"):
         st.error("Cannot connect to backend. Is FastAPI running?")
 
 
-# --- Anomaly Detection ---
+# Anomaly detection module
 if st.button("Check Anomaly"):
     try:
         response = requests.post(
