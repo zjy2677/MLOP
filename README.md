@@ -1,16 +1,12 @@
 # MLOP – House Price Calculator (FRANCE)
 
-This repository contains a simple **HOUSE PRICE CALCULATOR** for estimating house prices in FRANCE, it also has the ability to identify that ,given a surface area(m^2) and its price(euros), the pricing is reasonable.
-
-The project is designed as a learning-oriented backend service to 
-- Region: Whole France 
-- Goal: Given a house in any city in France, we want an instant but primary inspection of it and have a general understanding of its price
+This repository contains a simple **HOUSE PRICE CALCULATOR** for estimating house prices in FRANCE, it also has the ability to identify if , given a surface area(square meter) and its price(euros), the pricing is reasonable.
 
 ------------------------------------------
 # Data Source
 
 We use data from DVF of the past years and group by with cities. 
-Thus, we were able to calculate a average price estimator of house in euros/ m^2
+Thus, we were able to calculate a average price estimator of house in euros per squared meter.
 
 
 ```text
@@ -38,7 +34,7 @@ Project structure:
 └── README.md
 ```
 We seperated our repo into the following parts:<br>
-(1)**backend**: This will contains a service folder which has scoring.py that calculates the overall score of the house and a anomaly.py that examine if alarm should be triggered. Main.py is for an entry-point to our backend logic where we run fastAPI service. Dockerfile and requirement.txt contains settings and requirements for running all the backend files.<br>
+(1)**backend**: This will contain a service folder which has scoring.py that calculates the price of the house and a anomaly.py that examine if alarm should be triggered. Main.py is for an entry-point to our backend logic where we run fastAPI service. Dockerfile and requirement.txt contains settings and requirements for running all the backend files.<br>
 
 (2)**frontend**: This folder contains an app.py which defines our UI. Dockerfile and requirements.txt in this folder will ensure all necessary elements used in app.py are installed.<br>
 
@@ -58,7 +54,7 @@ Our backend follows a simple rule-based pipeline powered by the benchmark table 
 - Each row contains a city (`Commune`) and its average price per square meter (`avg_price_m2`).
 
 ### 2) House price estimation logic
-For each `/price` request (`city`, `surface`):
+For each `price` request (`city`, `surface`):
 1. Validate `surface` is numeric and strictly greater than 0.
 2. Look up the city in the benchmark table.
 3. Compute a baseline estimate:
@@ -68,7 +64,7 @@ For each `/price` request (`city`, `surface`):
 This gives a reference value for the input property.
 
 ### 3) Anomaly detection logic
-For each `/anomaly` request (`city`, `surface`, `actual_price`):
+For each `anomaly` request (`city`, `surface`, `actual_price`):
 1. Recompute the same baseline `estimated_price` using the scoring method above.
 2. Build a tolerance interval around the estimate:
    - `lower_bound = 0.8 × estimated_price`
@@ -143,8 +139,8 @@ docker run -d \
 ------------------------------------------
 ## Where to improve
 
-(1) We used a rather naive model average price * surface area to predict, we could try to implement a more complex model <br>
+(1) We used a rather naive prediction model: predicted_price = average price * surface area.<br>
 (2) We can enrich features (district, property age, rooms, floor, energy rating) and train a regression model to reduce bias from city-level average <br>
-(2) We could use a google gemini api to build a chatbot that further assist our customer in using this app <br>
+(2) We could use a google gemini api to build a chatbot that further assists our customer in using this app <br>
 
 
