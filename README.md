@@ -36,9 +36,9 @@ Project structure:
 └── README.md
 ```
 We seperated our repo into the following parts:<br>
-(1)**backend**: This will contains a service folder which has scoring.py that calculates the overall score of the house and a anomaly.py that examine if alarm should be triggered. Main.py is for an entry-point to our backend logic where we run fastAPI service. Dockerfile and requirement.txt contains settings and requirements for running all the backend files.<br>
+(1)**backend**: This will contains a service folder which has scoring.py that calculates the overall score of the house and a anomaly.py that examine if alarm should be triggered. Main.py is for an entry-point to our backend logic. Requirement.txt contains settings and requirements for running all the backend files.<br>
 
-(2)**frontend**: This folder contains an app.py which defines our UI. Dockerfile and requirements.txt in this folder will ensure all necessary elements used in app.py are installed.<br>
+(2)**frontend**: This folder contains an app.py which defines our UI. Requirements.txt in this folder will ensure all necessary elements used in app.py are installed.<br>
 
 (3)**Data**: Data folder contains a city_price_benchmark which contains average price of house in a specific city. Sample.csv contains a small part of the database for testing purpose only.<br>
 
