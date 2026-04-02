@@ -37,7 +37,7 @@ actual_price = st.number_input("Actual Price", min_value=1.0)
 st.divider()
 
 # Estimate price
-if st.button("Estimate Price"):
+if st.button("Estimate House Price"):
     try:
         response = requests.post(
             f"{BACKEND_URL}/price",
@@ -57,7 +57,7 @@ if st.button("Estimate Price"):
 
 
 # Anomaly detection module
-if st.button("Check Anomaly"):
+if st.button("Show Pricing Analaysis"):
     try:
         response = requests.post(
             f"{BACKEND_URL}/anomaly",
