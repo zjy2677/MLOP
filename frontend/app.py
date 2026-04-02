@@ -20,10 +20,13 @@ st.markdown(
     f"""
     <style>
     .stApp {{
-        background-image: url("data:image/png;base64,{base64_img}");
+        background:
+        linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.58)),
+        url("data:image/png;base64,{base64_img}");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        background-attachment: fixed;
     }}
     </style>
     """,
