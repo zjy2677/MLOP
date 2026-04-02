@@ -7,7 +7,28 @@ sys.path.append(str(ROOT_DIR))
 import streamlit as st
 from backend.services.scoring import calculate_price, load_benchmark_data
 from backend.services.anomaly import detect_anomaly
+import base64
 
+def get_base64(file_path):
+    with open(file_path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+        
+background_path = Path(__file__).parent / "background.png"
+base64_img = get_base64(background_path)
+
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/png;base64,{base64_img}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 data_path = Path("data/city_price_benchmark.csv")
 df = load_benchmark_data(data_path)
