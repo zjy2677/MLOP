@@ -36,19 +36,19 @@ actual_price = st.number_input("Actual Price", min_value=1.0)
 
 st.divider()
 
+# Estimate price
 if st.button("Estimate Price"):
     try:
         response = requests.post(
             f"{BACKEND_URL}/price",
-            json={
-                "city": city,
-                "surface": surface
-            }
+            json={"city": city, "surface": surface}
         )
 
         if response.status_code == 200:
             data = response.json()
-            st.success(f"The estimated price of this house is approximately {data['estimated_price']:.2f} euros")
+            st.success(
+                f"The estimated price of this house is approximately {data['estimated_price']:.2f} euros"
+            )
         else:
             st.error(response.json()["detail"])
 
@@ -70,15 +70,36 @@ if st.button("Check Anomaly"):
 
         if response.status_code == 200:
             data = response.json()
-            if (data['status'] == 'anomaly_overprice'):
-                st.error("This house is overpriced")
-            elif (data['status'] == 'anomaly_underprice'):
-                st.warning("This house is underpriced")
+
+            if data['status'] == 'anomaly_overprice':
+                st.error(
+                    f"The estimated price of this house is {data['estimated_price']}, "
+                    f"the actual price {data['actual_price']} has exceeded 1.3 times of the estimated price, "
+                    f"please be careful that this house is overpriced."
+                )
+
+            elif data['status'] == 'anomaly_underprice':
+                st.warning(
+                    f"The estimated price of this house is {data['estimated_price']}, "
+                    f"the actual price {data['actual_price']} has dropped below 80% of the estimated price, "
+                    f"this house is underpriced and please be aware."
+                )
+
             else:
-                st.success("This house is in normal price range")
-                         
+                st.success(
+                    f"This actual price {data['actual_price']} stays in range 80% - 130% of our estimated price {data['estimated_price']}. "
+                    f"The price is considered as noraml"
+                )
+
         else:
             st.error(response.json()["detail"])
 
     except requests.exceptions.ConnectionError:
         st.error("Cannot connect to backend. Is FastAPI running?")
+
+
+
+
+
+
+
