@@ -71,10 +71,10 @@ if st.button("Show pricing analysis"):
         st.error(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio:.2f} times of our estimation. This has surpassed 1.6 times benchmark so please be careful that this house is extremely overpriced. We strongly do not recommend you to take any actions on this property")
 
     elif result['status'] == 'anomaly_overprice':
-        st.error(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio:.2f} times of our estimation. This has surpassed 1.3 times benchmark so please be careful that this house is overpriced. We do not recommend you to take actions on this property")
+        st.warning(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio:.2f} times of our estimation. This has surpassed 1.3 times benchmark so please be careful that this house is overpriced. We do not recommend you to take actions on this property")
 
     elif result['status'] == 'extreme_underprice':
-        st.warning(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio*100:.2f}% of our estimation. This has dropped below 50% benchmark, please be aware that for some reasons this house is abnormally underpriced. We recommend you to be extremely cautious and do further investigations before any of your decisions")
+        st.error(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio*100:.2f}% of our estimation. This has dropped below 50% benchmark, please be aware that for some reasons this house is abnormally underpriced. We recommend you to be extremely cautious and do further investigations before any of your decisions")
 
     elif result['status'] == 'anomaly_underprice':
         st.warning(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio*100:.2f}% of our estimation. This has dropped below 80% benchmark, please be aware that for some reasons this house is underpriced. We recommend you to be cautious when making your decisions")
