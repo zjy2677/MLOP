@@ -39,7 +39,7 @@ if background_path.exists():
         unsafe_allow_html=True
     )
 
-st.title("Price your house")
+st.title("Price a house")
 
 st.sidebar.title("Instructions")
 
