@@ -102,7 +102,25 @@ docker network create house-net
 
 ---
 
-### 3. Run the Backend Container
+### 3. Prepare Environment Variables
+
+Create a `.env` file from the example:
+
+```bash
+cp .env.example .env
+```
+
+Make sure your `.env` contains:
+
+```env
+DATA_PATH=/app/data/city_price_benchmark.csv
+BACKGROUND_IMAGE_PATH=/app/background.png
+BACKEND_URL=http://house-backend-container:8000
+```
+
+---
+
+### 4. Run the Backend Container
 
 Start the backend service:
 
@@ -110,13 +128,14 @@ Start the backend service:
 docker run -d \
   --name house-backend-container \
   --network house-net \
+  --env-file .env \
   -p 8000:8000 \
   house-backend
 ```
 
 ---
 
-### 4. Run the Frontend Container
+### 5. Run the Frontend Container
 
 Start the frontend service:
 
@@ -124,8 +143,8 @@ Start the frontend service:
 docker run -d \
   --name house-frontend-container \
   --network house-net \
+  --env-file .env \
   -p 8501:8501 \
-  -e BACKEND_URL="http://house-backend-container:8000" \
   house-frontend
 ```
 
@@ -134,8 +153,7 @@ docker run -d \
 ## Access the Application
 
 - Frontend: http://localhost:8501  
-- Backend API: http://localhost:8000
-
+- Backend API: http://localhost:8000  
 ------------------------------------------
 ## Where to improve
 
