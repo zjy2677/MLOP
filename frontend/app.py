@@ -71,4 +71,4 @@ if st.button("Show pricing analysis"):
     elif result['status'] == 'anomaly_underprice':
         st.warning(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio*100:.2f}% of our estimation. This has dropped below 80% benchmark, please be aware that for some reasons this house is underpriced.")
     else:
-        st.success(f"This actual price {actual_price:.2f} is {ratio*100:.2f}% of our estimated price {estimated_price:.2f} and stays in acceptable range of 80% - 130%.cThe price is thus considered as noraml")
+        st.success(f"This actual price {actual_price:.2f} is {ratio*100:.2f}% of our estimated price {estimated_price:.2f} and stays in acceptable range of 80% - 130%.The price is thus considered as noraml")
