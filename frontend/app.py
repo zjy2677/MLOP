@@ -57,7 +57,7 @@ city = st.selectbox("Select City", cities)
 surface = st.number_input("Surface (m²)", min_value=1.0)
 actual_price = st.number_input("Actual Price", min_value=1.0)
 estimated_price = calculate_price(city, surface, df)
-
+ratio = actual_price / estimated_price
 st.divider()
 
 if st.button("Estimate house price"):
@@ -67,8 +67,8 @@ if st.button("Estimate house price"):
 if st.button("Show pricing analysis"):
     result = detect_anomaly(city, actual_price, surface, df)
     if result['status'] == 'anomaly_overprice':
-        st.error(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} has exceeded 1.3 times of the estimated price, please be careful that this house is overpriced.")
+        st.error(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio:.2f} times of our estimation. This has surpassed 1.3 times benchmark so please be careful that this house is overpriced.")
     elif result['status'] == 'anomaly_underprice':
-        st.warning(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} has dropped below 80% of the estimated price, this house is underpriced and please be aware.")
+        st.warning(f"The estimated price of this house is {estimated_price:.2f}, the actual price {actual_price:.2f} is {ratio:.2f} times of our estimation. This has dropped below 80% benchmark, please be aware that for some reasons this house is underpriced.")
     else:
-        st.success(f"This actual price {actual_price:.2f} stays in range 80% - 130% of our estimated price {estimated_price:.2f}. The price is considered as noraml")
+        st.success(f"This actual price {actual_price:.2f} is {ratio*100:.2f}% of our estimated price {estimated_price:.2f} and stays in acceptable range of 80% - 130%.cThe price is thus considered as noraml")
