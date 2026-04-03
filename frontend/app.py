@@ -47,13 +47,13 @@ if Path(background_path).exists():
         unsafe_allow_html=True
     )
 
-st.title("Price a house")
+st.title("PriceYourHouse")
 
 st.sidebar.title("Users Guide")
 
 st.sidebar.markdown(
     """
-### Weclome to Price a house!
+### Weclome to PriceYourHouse!
 
 This app will help you check the value of a property
 1. You select a city/region of the property
