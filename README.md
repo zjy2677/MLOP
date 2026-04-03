@@ -112,7 +112,7 @@ cp .env.example .env
 Make sure your `.env` contains:
 
 ```env
-DATA_PATH=/app/data/city_price_benchmark.csv
+DATA_PATH=data/city_price_benchmark.csv
 BACKGROUND_IMAGE_PATH=/app/background.png
 BACKEND_URL=http://house-backend-container:8000
 ```
