@@ -49,7 +49,7 @@ if Path(background_path).exists():
 
 st.title("PriceYourHouse")
 
-st.sidebar.title("Users Guide")
+st.sidebar.title("User's Guide")
 
 st.sidebar.markdown(
     """
